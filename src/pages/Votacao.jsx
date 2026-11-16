@@ -28,7 +28,7 @@ function Votacao() {
                 <p>Selecione um dos indicados e confirme o seu voto.</p>
             </header>
 
-            <section className="time-galo">
+            <section className="grade-indicados">
                 {indicados.map((j) => (
                     <JogadorCard
                         key={j.id}
@@ -81,7 +81,7 @@ function Votacao() {
                     <p className="demais-legenda">
                         Não entrou em campo e não pode receber votos.
                     </p>
-                    <div className="grade-jogadores">
+                    <div className="grade-elenco">
                         <JogadorCard jogador={suspenso} />
                     </div>
                 </section>
@@ -92,7 +92,7 @@ function Votacao() {
                 <p className="demais-legenda">
                     Não foram indicados ao prêmio neste jogo.
                 </p>
-                <div className="grade-jogadores">
+                <div className="grade-elenco">
                     {elenco.map((p) => (
                         <JogadorCard key={p.id} jogador={p} />
                     ))}

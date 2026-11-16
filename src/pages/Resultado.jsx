@@ -28,8 +28,8 @@ function Resultado() {
     const diferenca = craque.votos - vice.votos;
 
     function classeDoItem(indice) {
-        if (indice === primeiro) return "placar-item placar-eliminado";
-        if (indice === 0) return "placar-item placar-salvo";
+        if (indice === primeiro) return "placar-item placar-craque";
+        if (indice === primeiro + 1) return "placar-item placar-vice";
         return "placar-item";
     }
 
@@ -66,7 +66,7 @@ function Resultado() {
                 </div>
             ) : (
                 <>
-                    <p className="premio-craque">
+                    <p className="disputa">
                         {diferenca === 0
                             ? `Empate na premiação entre ${vice.nome} e ${craque.nome}!`
                             : `${craque.nome} lidera com ${diferenca} ${diferenca === 1 ? "voto" : "votos"} de vantagem sobre ${vice.nome}.`}

@@ -12,7 +12,7 @@ function JogadorCard({ jogador, selecionado = false, onSelecionar }) {
         <article
             className={`card card-${situacao}${selecionado ? " card-selecionado" : ""}`}
         >
-            {selo && <span className={`selo selo-${situacao}`}></span>}
+            {selo && <span className={`selo selo-${situacao}`}>{selo}</span>}
 
             <img src={foto} alt={nome} className="card-foto" />
 
