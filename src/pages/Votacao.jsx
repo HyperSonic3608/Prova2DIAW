@@ -24,11 +24,8 @@ function Votacao() {
     return (
         <main className="pagina">
             <header className="pagina-cabecalho">
-                <h1>Quem deve ser o Craque do Jogo?</h1>
-                <p>
-                    Selecione um jogador e confirme o voto para ele receber o
-                    troféu de Craque do Jogo.
-                </p>
+                <h1>Quem foi o Craque do Jogo?</h1>
+                <p>Selecione um dos indicados e confirme o seu voto.</p>
             </header>
 
             <section className="time-galo">
@@ -50,7 +47,7 @@ function Votacao() {
                             <strong>{selecionado.nome}</strong> ficar.
                         </>
                     ) : (
-                        "Nenhum peão selecionado."
+                        "Nenhum jogador selecionado."
                     )}
                 </p>
                 <button
@@ -80,24 +77,24 @@ function Votacao() {
 
             {suspenso && (
                 <section className="demais">
-                    <h2>Jogador suspenso</h2>
+                    <h2>Suspenso</h2>
                     <p className="demais-legenda">
-                        Está suspenso e não pode receber votos.
+                        Não entrou em campo e não pode receber votos.
                     </p>
                     <div className="grade-jogadores">
-                        <JogadorCard participante={suspenso} />
+                        <JogadorCard jogador={suspenso} />
                     </div>
                 </section>
             )}
 
             <section className="demais">
-                <h2>Demais jogadores</h2>
+                <h2>Demais jogadores do elenco</h2>
                 <p className="demais-legenda">
-                    Fora do jogo nessa partida, não podem receber votos.
+                    Não foram indicados ao prêmio neste jogo.
                 </p>
                 <div className="grade-jogadores">
                     {elenco.map((p) => (
-                        <JogadorCard key={p.id} participante={p} />
+                        <JogadorCard key={p.id} jogador={p} />
                     ))}
                 </div>
             </section>

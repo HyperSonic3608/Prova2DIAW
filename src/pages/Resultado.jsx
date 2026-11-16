@@ -25,27 +25,27 @@ function Resultado() {
     const primeiro = 0;
     const craque = resultado[primeiro];
     const vice = resultado[primeiro + 1];
-    const diferenca = vice.votos - craque.votos;
+    const diferenca = craque.votos - vice.votos;
 
-    //     function classeDoItem(indice) {
-    //         if (indice === primeiro) return "placar-item placar-eliminado";
-    //         if (indice === 0) return "placar-item placar-salvo";
-    //         return "placar-item";
-    //     }
-    //
-    //     function handleDesfazer() {
-    //         setVotos(desfazerUltimoVoto());
-    //     }
-    //
-    //     function handleZerar() {
-    //         if (window.confirm("Apagar todos os votos e reiniciar a votação?")) {
-    //             zerarVotos();
-    //             setVotos([]);
-    //         }
-    //     }
+    function classeDoItem(indice) {
+        if (indice === primeiro) return "placar-item placar-eliminado";
+        if (indice === 0) return "placar-item placar-salvo";
+        return "placar-item";
+    }
 
-    return {
-        /* <main className="pagina">
+    function handleDesfazer() {
+        setVotos(desfazerUltimoVoto());
+    }
+
+    function handleZerar() {
+        if (window.confirm("Apagar todos os votos e reiniciar a votação?")) {
+            zerarVotos();
+            setVotos([]);
+        }
+    }
+
+    return (
+        <main className="pagina">
             <header className="pagina-cabecalho">
                 <h1>Parcial: Craque do Jogo</h1>
                 <p className="total-votos">
@@ -57,8 +57,8 @@ function Resultado() {
             {total === 0 ? (
                 <div className="vazio">
                     <p>
-                        Nenhum voto ainda. Escolha quem você quer salvar para
-                        ver a parcial.
+                        Nenhum voto ainda. Escolha o craque do jogo para ver a
+                        parcial.
                     </p>
                     <Link to="/votacao" className="botao botao-principal">
                         Ir para a votação
@@ -66,10 +66,10 @@ function Resultado() {
                 </div>
             ) : (
                 <>
-                    <p className="zona-eliminacao">
+                    <p className="premio-craque">
                         {diferenca === 0
-                            ? `Empate na zona de eliminação entre ${vice.nome} e ${craque.nome}!`
-                            : `${craque.nome} precisa de ${diferenca} ${diferenca === 1 ? "voto" : "votos"} para escapar.`}
+                            ? `Empate na premiação entre ${vice.nome} e ${craque.nome}!`
+                            : `${craque.nome} lidera com ${diferenca} ${diferenca === 1 ? "voto" : "votos"} de vantagem sobre ${vice.nome}.`}
                     </p>
 
                     <ol className="placar">
@@ -88,14 +88,14 @@ function Resultado() {
                                         <span className="placar-nome">
                                             {p.nome}
                                         </span>
-                                        {indice === 0 && (
-                                            <span className="selo-placar selo-salvo">
-                                                Mais salvo
+                                        {indice === primeiro + 1 && (
+                                            <span className="selo-placar selo-vice">
+                                                Vice
                                             </span>
                                         )}
                                         {indice === primeiro && (
-                                            <span className="selo-placar selo-eliminado">
-                                                Sairia hoje
+                                            <span className="selo-placar selo-craque">
+                                                Craque do jogo
                                             </span>
                                         )}
                                     </div>
@@ -135,8 +135,8 @@ function Resultado() {
                     </div>
                 </>
             )}
-        </main>*/
-    };
+        </main>
+    );
 }
 
 export default Resultado;

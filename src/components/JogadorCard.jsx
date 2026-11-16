@@ -17,11 +17,11 @@ function JogadorCard({ jogador, selecionado = false, onSelecionar }) {
             <img src={foto} alt={nome} className="card-foto" />
 
             <div className="card-corpo">
-                <h3 className="card-nome">{nome}</h3>
+                <h3 className="card-info">
+                    <a className="card-numero">{numero}</a> {nome}
+                </h3>
 
-                <p className="card-info">
-                    {numero} - {posicao}
-                </p>
+                <p className="card-posicao">{posicao}</p>
 
                 {onSelecionar && (
                     <button
