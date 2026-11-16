@@ -2,6 +2,8 @@
 
 Aplicação React + Vite para a votação do **Craque do Jogo** do **Atlético Mineiro**. Depois da vitória por **3 x 1 sobre o Cruzeiro na Arena MRV**, **quatro jogadores** foram indicados ao prêmio e o torcedor vota em quem jogou mais: o **mais votado** é o Craque do Jogo. O usuário seleciona um indicado, confirma o voto, acompanha o histórico dos votos da sessão e vê a parcial com o total de votos, o percentual de cada jogador e a vantagem de quem lidera sobre o segundo colocado. Os votos ficam salvos no `localStorage` do navegador.
 
+[Clique aqui](ENUNCIADO.md) para consultar o enunciado da prova
+
 ---
 
 ### Captura de Tela
@@ -12,28 +14,28 @@ Aplicação React + Vite para a votação do **Craque do Jogo** do **Atlético M
 - **Tela estreita**: Em telas de até 900px, a grade dos indicados passa para 2 colunas; em até 520px, para 1 coluna.
 
 | <img src="https://joaopauloaramuni.github.io/react-imgs/VotacaoCraqueGalo/imgs/01_home.png" alt="Home" width="1000"/> |
-|:----------------------------------------------------:|
-|                        Home                          |
+| :-------------------------------------------------------------------------------------------------------------------: |
+|                                                         Home                                                          |
 
 | <img src="https://joaopauloaramuni.github.io/react-imgs/VotacaoCraqueGalo/imgs/03_votacao.png" alt="Votação" width="1000"/> |
-|:----------------------------------------------------:|
-|                       Votação                        |
+| :-------------------------------------------------------------------------------------------------------------------------: |
+|                                                           Votação                                                           |
 
 | <img src="https://joaopauloaramuni.github.io/react-imgs/VotacaoCraqueGalo/imgs/04_voto_registrado.png" alt="Voto registrado" width="1000"/> |
-|:----------------------------------------------------:|
-|        Jogador selecionado e histórico da sessão     |
+| :-----------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                  Jogador selecionado e histórico da sessão                                                  |
 
 | <img src="https://joaopauloaramuni.github.io/react-imgs/VotacaoCraqueGalo/imgs/05_resultado.png" alt="Resultado" width="1000"/> |
-|:----------------------------------------------------:|
-|                      Resultado                       |
+| :-----------------------------------------------------------------------------------------------------------------------------: |
+|                                                            Resultado                                                            |
 
 | <img src="https://joaopauloaramuni.github.io/react-imgs/VotacaoCraqueGalo/imgs/02_resultado_vazio.png" alt="Resultado sem votos" width="1000"/> |
-|:----------------------------------------------------:|
-|                 Resultado sem votos                  |
+| :---------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                               Resultado sem votos                                                               |
 
 | <img src="https://joaopauloaramuni.github.io/react-imgs/VotacaoCraqueGalo/imgs/06_votacao_tablet.png" alt="Votação em tela estreita" width="600"/> |
-|:----------------------------------------------------:|
-|           Votação em tela estreita (2 colunas)       |
+| :------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                        Votação em tela estreita (2 colunas)                                                        |
 
 ---
 
@@ -114,28 +116,28 @@ Responsável por ler os jogadores e registrar, desfazer, guardar e contabilizar 
 
 > **Atenção:** os votos são guardados como um **array de ids**, na ordem em que foram dados. Desta vez o **id de cada jogador é um texto** (ex.: `['everson', 'gustavo-scarpa', 'everson']`), e não um número. O **total de votos é `votos.length`** e não existe uma função para somar o total.
 
-| Função | O que faz |
-|---|---|
-| `listarJogadores()` | Retorna todos os jogadores do elenco. |
-| `listarPorSituacao(situacao)` | Retorna os jogadores com a situação informada: `'indicado'`, `'suspenso'` ou `'elenco'`. |
-| `obterSuspenso()` | Retorna o jogador suspenso neste jogo (um único objeto) ou `null`. |
-| `obterVotos()` | Lê os votos salvos no `localStorage` e devolve um array de ids. Se não houver nada salvo, devolve `[]`. |
-| `registrarVoto(id)` | Acrescenta 1 voto (o id) ao final do array, salva no `localStorage` e devolve o array atualizado. Lança erro se o jogador não estiver entre os indicados. |
-| `desfazerUltimoVoto()` | Remove o último voto do array, salva no `localStorage` e devolve o array atualizado. |
-| `contarVotos(votos)` | Converte o array de votos em um objeto no formato `{ [id]: quantidade }`. |
-| `calcularResultado(votos)` | Devolve a lista dos jogadores indicados com os campos extras `votos` e `percentual`, ordenada do **mais votado** para o **menos votado**. O **primeiro** da lista é o **Craque do Jogo** e o **segundo** é o **vice**. |
-| `zerarVotos()` | Remove todos os votos do `localStorage`. |
+| Função                        | O que faz                                                                                                                                                                                                              |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `listarJogadores()`           | Retorna todos os jogadores do elenco.                                                                                                                                                                                  |
+| `listarPorSituacao(situacao)` | Retorna os jogadores com a situação informada: `'indicado'`, `'suspenso'` ou `'elenco'`.                                                                                                                               |
+| `obterSuspenso()`             | Retorna o jogador suspenso neste jogo (um único objeto) ou `null`.                                                                                                                                                     |
+| `obterVotos()`                | Lê os votos salvos no `localStorage` e devolve um array de ids. Se não houver nada salvo, devolve `[]`.                                                                                                                |
+| `registrarVoto(id)`           | Acrescenta 1 voto (o id) ao final do array, salva no `localStorage` e devolve o array atualizado. Lança erro se o jogador não estiver entre os indicados.                                                              |
+| `desfazerUltimoVoto()`        | Remove o último voto do array, salva no `localStorage` e devolve o array atualizado.                                                                                                                                   |
+| `contarVotos(votos)`          | Converte o array de votos em um objeto no formato `{ [id]: quantidade }`.                                                                                                                                              |
+| `calcularResultado(votos)`    | Devolve a lista dos jogadores indicados com os campos extras `votos` e `percentual`, ordenada do **mais votado** para o **menos votado**. O **primeiro** da lista é o **Craque do Jogo** e o **segundo** é o **vice**. |
+| `zerarVotos()`                | Remove todos os votos do `localStorage`.                                                                                                                                                                               |
 
 ---
 
 ## 🧭 Rotas (`App.jsx`)
 
-| Rota | Componente | Descrição |
-|---|---|---|
-| `/` | `Home` | Página inicial com o escudo, o balão com o placar do jogo, os indicados e o jogador suspenso. |
-| `/votacao` | `Votacao` | Lista os 4 indicados com o botão **Selecionar**, a barra com o botão **Confirmar voto**, o histórico de votos da sessão, o suspenso e os demais jogadores do elenco. |
+| Rota         | Componente  | Descrição                                                                                                                                                                     |
+| ------------ | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`          | `Home`      | Página inicial com o escudo, o balão com o placar do jogo, os indicados e o jogador suspenso.                                                                                 |
+| `/votacao`   | `Votacao`   | Lista os 4 indicados com o botão **Selecionar**, a barra com o botão **Confirmar voto**, o histórico de votos da sessão, o suspenso e os demais jogadores do elenco.          |
 | `/resultado` | `Resultado` | Mostra o total de votos, a disputa pela liderança e o placar ordenado com posição, barra, percentual e quantidade de votos. Permite desfazer o último voto e zerar a votação. |
-| `*` | `Navigate` | Qualquer outro endereço redireciona para `/` (com `replace`). |
+| `*`          | `Navigate`  | Qualquer outro endereço redireciona para `/` (com `replace`).                                                                                                                 |
 
 ---
 
@@ -153,11 +155,11 @@ Array exportado por padrão com um objeto por jogador:
 { id: 'gustavo-scarpa', nome: 'Gustavo Scarpa', numero: 10, posicao: 'MEI', foto: '/jogadores/gustavo-scarpa.webp', situacao: 'indicado' }
 ```
 
-| `situacao` | Significado |
-|---|---|
+| `situacao`   | Significado                                                                                                  |
+| ------------ | ------------------------------------------------------------------------------------------------------------ |
 | `'indicado'` | Foi indicado ao Craque do Jogo e pode receber votos (Everson, Renan Lodi, Gustavo Scarpa e Mateo Cassierra). |
-| `'suspenso'` | Cumpriu suspensão e não entrou em campo (Lyanco). |
-| `'elenco'` | Demais jogadores do elenco, não podem receber votos. |
+| `'suspenso'` | Cumpriu suspensão e não entrou em campo (Lyanco).                                                            |
+| `'elenco'`   | Demais jogadores do elenco, não podem receber votos.                                                         |
 
 O caminho da foto começa com `/` porque os arquivos da pasta `public` são servidos na raiz da aplicação pelo Vite. As fotos são **verticais** (retrato), por isso o card usa `aspect-ratio: 3 / 4`.
 
